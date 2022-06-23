@@ -9,7 +9,7 @@ headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 
 source = requests.get('https://www.amazon.in/s?k=Laptops&ref=nb_sb_noss_2', headers = headers).text
 
-soup = BeautifulSoup(source, 'lxml')
+soup = BeautifulSoup(source, 'html.parser')
 
 #print(soup.prettify())
 
@@ -21,10 +21,10 @@ Prices = []
 print(soup.find_all('a', class_='a-link-normal a-text-normal'))
 
 for i in soup.find_all('a', class_='a-link-normal a-text-normal'):
-    # string = i.text
-    # Names.append( string.strip() )
+    string = i.text
+    Names.append( string.strip() )
 
-    print(i)
+    #print(i)
 
 for i in soup.find_all('span', class_='a-price-whole'):
     Prices.append(i.text)
